@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 var campgrounds = [
     {name: "Salmon Creek", image: "https://pixabay.com/get/57e6d7454e53ae14f1dc84609620367d1c3ed9e04e50744076277ddd9349cc_340.jpg"},
     {name: "Granite Hill", image: "https://pixabay.com/get/54e5d4414356a814f1dc84609620367d1c3ed9e04e50744076277ddd9349cc_340.jpg"},
-    {name: "Mountain Goat's Rest", image: "https://pixabay.com/get/55e7d24a485aac14f1dc84609620367d1c3ed9e04e50744076277ddd9349cc_340.jpg"}
+    {name: "Mountain Goat's Rest", image: "https://pixabay.com/get/57e8d7444251ae14f1dc84609620367d1c3ed9e04e50744076277ddd9349cc_340.jpg"}
 ]
 
 
