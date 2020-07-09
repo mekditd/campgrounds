@@ -18,31 +18,31 @@ var campgroundSchema = new mongoose.Schema({
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-Campground.create(
-    {
-        name: "Salt Water", 
-        image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        description: "This is a beautiful sight!"
-    },
-    {
-        name: "Granite Hill", 
-        image: "https://images.unsplash.com/photo-1471115853179-bb1d604434e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        description: "A walk of lifetime!"
-    },
-    {
-        name: "Salmon Creek", 
-        image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        description: "Nice fishing exprience to those who like the lifestyle!"
-    }, function(err, campground){
-        if(err){
-            console.log("Something went wrong!");
-            console.log(err);
-        } else {
-            console.log("We just added new campground: ");
-            console.log(campground)
-        }
-    }
-)
+// Campground.create(
+//     {
+//         name: "Salt Water", 
+//         image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//         description: "This is a beautiful sight!"
+//     },
+//     {
+//         name: "Granite Hill", 
+//         image: "https://images.unsplash.com/photo-1471115853179-bb1d604434e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//         description: "A walk of lifetime!"
+//     },
+//     {
+//         name: "Salmon Creek", 
+//         image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//         description: "Nice fishing exprience to those who like the lifestyle!"
+//     }, function(err, campground){
+//         if(err){
+//             console.log("Something went wrong!");
+//             console.log(err);
+//         } else {
+//             console.log("We just added new campground: ");
+//             console.log(campground)
+//         }
+//     }
+// )
 
 
 
