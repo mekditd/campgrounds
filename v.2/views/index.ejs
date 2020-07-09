@@ -4,7 +4,7 @@
 
 <div class="container">
     <header class="jumbotron">
-        <div class="container text-center" >
+        <div class="container text-center">
             <h1>Welcome to Campgrounds!</h1>
             <p>Hand Picked Campgrounds from all over the World!</p>
             <p>
@@ -16,17 +16,21 @@
         <div class=" row d-flex justify-content-center col-lg-12">
             <h3>Our Most Popular Campgrounds</h3>
         </div>
-        <% campgrounds.forEach(function(campgrounds){ %>
-        <div class="row">
-            <div class="col-6 col-md-4">
+        <% campgrounds.forEach(function(campground){ %>
+
+        <div class="col-sm-6 col-md-3">
                 <div class="img-thumbnail">
-                    <img class="figure-img" src="<%= campgrounds.image %>" alt="Campground Images">
-                    <figcaption class="figure-caption">
-                        <li><%= campgrounds.name %></li>
-                    </figcaption>
+                    <img class="img-thumbnail " src="<%= campground.image %> " alt="Campground Images">
+                    <div class="figure-caption">
+                        <li><%= campground.name %></li>
+                    </div>
+                    <p >
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                    </p>
                 </div>
+
             </div>
-        </div>
+
         <% }) %>
     </div>
 </div>
