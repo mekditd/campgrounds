@@ -45,6 +45,6 @@ app.get("/campgrounds/new", function(req, res){
     res.render("new")
 })
 
-app.listen(3000, function(){
+app.listen(3001, function(){
     console.log("Server is listening on port 3000!");
 })
