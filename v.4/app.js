@@ -3,29 +3,14 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   Campground = require("./models/campground"),
+  Comment = require("./models/comment"),
   seedDB = require("./seeds");
 
-mongoose.connect("mongodb://localhost/yelp_camp_v4", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/yelp_camp_v4", { useNewUrlParser: true, useUnifiedTopology: true  });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 // seedDB();
 
-
-// Campground.create(
-//     {
-//         name: "Salmon Creek", 
-//         image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-//         description: "Nice fishing exprience to those who like the lifestyle!"
-//     }, function(err, campground){
-//         if(err){
-//             console.log("Something went wrong!");
-//             console.log(err);
-//         } else {
-//             console.log("We just added new campground: ");
-//             console.log(campground)
-//         }
-//     }
-// )
 
 app.get("/", function (req, res) {
   res.render("landing");
@@ -39,7 +24,7 @@ app.get("/campgrounds", function (req, res) {
       console.log(err);
     } else {
       // console.log(allCampgrounds);
-      res.render("index", { campgrounds: allCampgrounds });
+      res.render("campgrounds/index", { campgrounds: allCampgrounds });
     }
   });
 });
@@ -67,7 +52,7 @@ app.post("/campgrounds", function (req, res) {
 
 // NEW - show form to create new campground
 app.get("/campgrounds/new", function (req, res) {
-  res.render("new");
+  res.render("campgrounds/new");
 });
 
 // SHOW - shows more info about one campground
@@ -81,10 +66,46 @@ app.get("/campgrounds/:id", function (req, res) {
         console.log(err);
       } else {
         // render show template with that campground
-        res.render("show", { campground: foundCampground });
+        res.render("campgrounds/show", { campground: foundCampground });
       }
     });
 });
+
+
+//=====================================
+// COMMENT ROUTES
+//=====================================
+
+app.get("/campgrounds/:id/comments/new", function(req, res){
+  // find campground by id
+  Campground.findById(req.params.id, function(err, campground){
+    if (err){
+      console.log(err);
+    }else {
+      res.render("comments/new", {campground: campground});
+    }
+  })
+})
+
+app.post("campgrounds/:id/commnets", function(req, res){
+  // lookup campground using id
+  Campground.findById(req.params.id, function(err, campground){
+    if (err){
+      console.log(err);
+      res.redirect("/campgrouds");
+    } else {
+      Comment.create(req.body.comment, function(err, comment){
+        if(err){
+          console.log(err);
+        } else {
+          campground.comments.push(comment);
+          campground.save();
+          res.redirect("/campgrounds/" + campground._id);
+        }
+      })
+    }
+  })
+})
 
 app.listen(3004, function () {
   console.log("Server is listening on port 3004!");
