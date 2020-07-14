@@ -9,7 +9,7 @@ var express = require("express"),
 mongoose.connect("mongodb://localhost/yelp_camp_v4", { useNewUrlParser: true, useUnifiedTopology: true  });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-// seedDB();
+seedDB();
 
 
 app.get("/", function (req, res) {
@@ -87,7 +87,7 @@ app.get("/campgrounds/:id/comments/new", function(req, res){
   })
 })
 
-app.post("campgrounds/:id/commnets", function(req, res){
+app.post("/campgrounds/:id/comments", function(req, res){
   // lookup campground using id
   Campground.findById(req.params.id, function(err, campground){
     if (err){
