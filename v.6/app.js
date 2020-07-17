@@ -18,7 +18,9 @@ seedDB();
 // PASSPORT CONFIGURATION
 
 app.use(require("express-session")({
-  secret: "Lucy will always remembered!"
+  secret: "Lucy will always remembered!",
+  resave: false,
+  saveUninitialized: false
 }))
 
 app.get("/", function (req, res) {
